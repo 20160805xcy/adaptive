@@ -1,0 +1,60 @@
+<html>
+<link rel="stylesheet" type="text/css" href="assets/waifu.css" />
+<script src="jquery3.2.1/jquery.min.js"></script>
+<!-- 看板娘 -->
+<link rel="stylesheet" type="text/css" href="yjlblog/flat-ui.min.css" />
+
+<!-- 剪贴板工具 -->
+<script src="clipboard/clipboard.js"></script>
+
+<script src="fullScreen.js"></script>
+
+<body style="background-color: silver;">
+
+    <!-- 剪贴板 -->
+    <input type="text" class="form-control has-success" id="copyVal" value="AA秀色可餐BB无与伦比CC" />
+    <button class="copyBtn btn btn-block btn-inverse" data-clipboard-target="#copyVal">点击复制</button>
+
+    <!-- 全屏 -->
+    <button class="btn btn-primary" onclick="fullScreen()">现代浏览器全屏</button>
+    <button class="btn btn-primary" onclick="exitScreen()">现代浏览器退出</button>
+    <button class="btn btn-primary" onclick="iefull()">低版本ie全屏</button>
+
+
+    <!-- 看板娘 需要部署到服务器上才能加载到api数据 -->
+    <link rel="stylesheet" type="text/css" href="./assets/waifu.css">
+    <div class="waifu" id="waifu">
+        <div class="waifu-tips" style="opacity: 1;"></div>
+        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+    <script src="./assets/live2d.js"></script>
+    <script src="./assets/waifu-tips.js"></script>
+    <script type="text/javascript">initModel()</script>
+
+</body>
+
+<script>
+    //实例化 ClipboardJS对象;
+    var copyBtn = new ClipboardJS('.copyBtn');
+
+    copyBtn.on("success", function (e) {
+        // 复制成功
+        alert(e.text);
+        e.clearSelection();
+    });
+    copyBtn.on("error", function (e) {
+        //复制失败；
+        console.log(e.action)
+    });
+</script>
+
+</html>
